@@ -15,27 +15,51 @@ attr_reader :title
   def statement
   	total, bonus points = 0,0
   	result = 'Car rental for #{@name.to_s}\n'
+  	@rentals.each do |rental|
+  		this_amount = amount_for(rental)
+  		#adding bonus points to amount
+  		if this_amount < 0
+			bonus_points -= 10
+		end
+        # changed r to rental
+		bonus_points = bonus_points + 1
+		if rental.car.style == Car::SUV && rental.days_rented > 1
+			bonus_points = bonus_points + 1
+		end
 
+		#getting results
+
+		result += rental.car.title.to_s + "," + this_amount.to_s + "\n"
+		total += this_amount
+	end
+
+	result += "Amount owed is " + "#{total.to_s}" + "\n"
+	result +="Earned bonus points: " + bonus_points.to_s
+	result
   end
+
+
+ 
 
 
 
   #Implement new method
+  #Simplify variable name "amount_for" to "result", r to "rental"
 
-  def amount_for(rentals)
-  	this_amount = 0
-  	case r.car.style
+  def amount_for(rental)
+  	result = 0
+  	case rental.car.style
   	when Car::SUV
-  		this_amount += r.days_rented * 30
+  		result += rental.days_rented * 30
   	when Car::HATCHBACK
-  		this_amount += 15
-  		if r.days_rented > 3
-  			this_amount += (r.days_rented - 3) * 15
+  		result += 15
+  		if rental.days_rented > 3
+  			result += (rental.days_rented - 3) * 15
   		end
   	when Car::SALOON
-  		this_amount += 20
-  		if r.days_rented > 2
-  			this_amount += (r.days_rented - 2) * 15
+  		result += 20
+  		if rental.days_rented > 2
+  			result += (rental.days_rented - 2) * 15
   		end
   	end
   end
@@ -43,7 +67,7 @@ attr_reader :title
 
 
  
-=begin 
+=begin ORIGINAL
   def statement
    total = 0
    bonus points = 0
