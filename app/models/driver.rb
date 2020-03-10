@@ -38,15 +38,17 @@ attr_reader :title
 	result
   end
 
-
- 
-
-
-
-  #Implement new method
-  #Simplify variable name "amount_for" to "result", r to "rental"
-
+  #test moved method in rental works, defined rental_total in rental
   def amount_for(rental)
+  	rental.rental_total
+  end
+
+
+
+  #Implement new method, split original code base
+  #Simplified for coder the variable name "amount_for" to "result", r to "rental" object
+
+   def amount_for(rental)
   	result = 0
   	case rental.car.style
   	when Car::SUV
@@ -62,7 +64,7 @@ attr_reader :title
   			result += (rental.days_rented - 2) * 15
   		end
   	end
-  end
+   
 
 
 
