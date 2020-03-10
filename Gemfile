@@ -31,7 +31,7 @@ gem 'bootsnap', '>= 1.4.2', require: false
 group :test do
   gem 'shoulda', '~> 3.5'
   gem 'shoulda-matchers', '~> 2.0'
-  gem 'rails-controller-testing'
+  gem 'rails-controller-testing' 
 end
 
 group :development, :test do
