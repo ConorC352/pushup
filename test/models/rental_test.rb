@@ -12,4 +12,5 @@ class RentalTest < ActiveSupport::TestCase
 
   test 'invalid without cars_rented' do
   end
+
 end

@@ -16,9 +16,8 @@ attr_reader :title
   	total, bonus points = 0,0
   	result = 'Car rental for #{@name.to_s}\n'
   	@rentals.each do |rental|
-  		this_amount = amount_for(rental)
   		#adding bonus points to amount
-  		if this_amount < 0
+  		if rental.rental_total < 0
 			bonus_points -= 10
 		end
         # changed r to rental
@@ -29,8 +28,8 @@ attr_reader :title
 
 		#getting results
 
-		result += rental.car.title.to_s + "," + this_amount.to_s + "\n"
-		total += this_amount
+		result += rental.car.title.to_s + "," + rental.rental_total.to_s + "\n"
+		total += rental.rental_total
 	end
 
 	result += "Amount owed is " + "#{total.to_s}" + "\n"
