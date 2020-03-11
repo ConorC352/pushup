@@ -20,18 +20,6 @@ class CarTest < ActiveSupport::TestCase
    #assert car.valid?
   #end
 
-
-  test 'invalid without title' do
-  	car = Car.new(style: '0')
-    refute car.valid?, 'car is valid without a title'
-    assert_not_nil car.errors[:title], 'no validation error for title present'
-  end
-
-  test 'invalid without style' do
-  	car = Car.new(title: 'SALOON')
-    refute car.valid?
-    assert_not_nil car.errors[:style]
-  end
  
 
   #test "should not save car without title" do
